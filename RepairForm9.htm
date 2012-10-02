@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<title>MGR Repair Form</title>
+
+<style type="text/css">
+input {width: 40px;}
+</style>
+
+<script type="text/javascript" language="javascript">
+
+
+function autocalc(oText)
+{
+if (isNaN(oText.value)) //filter input
+{
+alert('Numbers only!');
+oText.value = '';
+}
+var field, val, oForm = oText.form, total = a = 0;
+for (a; a < arguments.length; ++a) //loop through text elements
+{
+field = arguments[a];
+val = parseFloat(field.value); //get value
+if (!isNaN(val)) //number?
+{
+total += val; //accumulate
+//total = roundNumber(total, 2)
+}
+}
+oForm.total.value = roundNumber(total, 2); //out
+}
+
+function roundNumber(num, dec) {
+	var result = Math.round(num*Math.pow(10,dec))/Math.pow(10,dec);
+	return result;
+}
+
+
+function waitToShow (delay) { 
+if (delay > 1) {
+setTimeout("waitToShow(1)",3000);
+} else {
+document.getElementById("PrintIt").style.display = '';
+}
+}
+
+function hideButton () {
+document.getElementById("PrintIt").style.display = 'none';window.print();
+eval("waitToShow(2)");}
+
+
+</script>
+
+</head>
+<CENTER><H1>Music Go Round</H1>
+<B>421 Crossroads Blvd
+<BR>
+Cary, NC 27518
+<BR>
+(919) 851-2252
+<BR>
+www.musicgoround.com</B>
+<BR>
+<H3>Repair Form</H3>
+<BR>
+</CENTER>
+
+
+
+<form name="dform">
+<TABLE frame="hsides" BORDER="10" WIDTH="100%">
+<col width=64>
+<col width=200>
+<TR>
+<TD>Date:</TD><TD><INPUT Id="currdate" name="Date" value="" style="width:100%"></INPUT></TD>
+</TR>
+<TR>
+<TD>Name:</TD><TD><INPUT name="Name" value="" style="width:100%"></TD>
+</TR>
+<TR>
+<TD>Address:</TD><TD><INPUT name="Address" value="" style="width:100%"></TD>
+</TR>
+<TR>
+<TD>City:</TD><TD><INPUT name="City" value="" style="width:100%"></TD>
+</TR>
+<TR>
+<TD>State:</TD><TD><INPUT name="State" value="NC" style="width:100%"></TD>
+</TR>
+<TR>
+<TD>Zip:</TD><TD><INPUT name="Zip" value="" style="width:100%"></TD>
+</TR>
+<TR>
+<TD>Phone:</TD><TD><INPUT name="Phone" value="" style="width:100%"></TD>
+</TR>
+<TR>
+<TD>email:</TD><TD><INPUT name="email" value="" style="width:100%"></TD>
+</TR>
+<TR>
+<TD>Article:</TD><TD><INPUT name="Article" value="" style="width:100%"></TD>
+</TR>
+<TR>
+<TD>Notes:</TD><TD><INPUT name="Notes" value="" style="width:100%"></TD>
+</TR>
+
+</TABLE>
+</form>
+
+<script>
+/*Current date in form credit: 
+JavaScript Kit (www.javascriptkit.com)
+Over 200+ free scripts here!
+*/
+
+var mydate=new Date()
+var theyear=mydate.getYear()
+if (theyear < 1000)
+theyear+=1900
+var theday=mydate.getDay()
+var themonth=mydate.getMonth()+1
+if (themonth<10)
+themonth="0"+themonth
+var theday=mydate.getDate()
+if (theday<10)
+theday="0"+theday
+
+//////EDIT below three variable to customize the format of the date/////
+
+var displayfirst=themonth
+var displaysecond=theday
+var displaythird=theyear
+
+////////////////////////////////////
+
+document.dform.currdate.value=displayfirst+"/"+displaysecond+"/"+displaythird
+
+</script>
+
+
+
+<form>
+
+<TABLE frame="hsides" BORDER="10" WIDTH="100%">
+<col width=150>
+<col width=20>
+<!-- pass field reference ('this') and other field references -->
+<tr>
+<th>SERVICE</th>
+<th ALIGN=LEFT>FEE</th>
+</tr>
+<tr>
+<TD>Restring</TD><TD><input name="t1" type="text" onkeyup="return autocalc(this,t2,t3,t4,t5,t6,t7,t8,t9)" tabindex="1"></td>
+</tr>
+<tr>
+<TD>Recondition Fretboard</TD><TD><input name="t2" type="text" onkeyup="return autocalc(this,t1,t3,t4,t5,t6,t7,t8,t9)" tabindex="2"></td>
+</tr>
+<tr>
+<TD>Fret Polish</TD><TD><input name="t3" type="text" onkeyup="return autocalc(this,t1,t2,t4,t5,t6,t7,t8,t9)" tabindex="3"></td>
+</tr>
+<tr>
+<TD>Fret Dress</TD><TD><input name="t4" type="text" onkeyup="return autocalc(this,t1,t2,t3,t5,t6,t7,t8,t9)" tabindex="4"></td>
+</tr>
+<tr>
+<TD>Setup</TD><TD><input name="t5" type="text" onkeyup="return autocalc(this,t1,t2,t3,t4,t6,t7,t8,t9)" tabindex="5"></td>
+</tr>
+<tr>
+<TD>Nut</TD><TD><input name="t6" type="text" onkeyup="return autocalc(this,t1,t2,t3,t4,t5,t7,t8,t9)" tabindex="5"></td>
+</tr>
+<tr>
+<TD>Saddle</TD><TD><input name="t7" type="text" onkeyup="return autocalc(this,t1,t2,t3,t4,t5,t6,t8,t9)" tabindex="6"></td>
+</tr>
+<tr>
+<TD>Pickups</TD><TD><input name="t8" type="text" onkeyup="return autocalc(this,t1,t2,t3,t4,t5,t6,t7,t9)" tabindex="7"></td>
+</tr>
+<tr>
+<TD><INPUT name="Other" value="Other" style="width:100%"></INPUT></TD>
+<TD><input name="t9" type="text" onkeyup="return autocalc(this,t1,t2,t3,t4,t5,t6,t7,t8)" tabindex="8"></td>
+</tr>
+<TR>
+<TD ALIGN=RIGHT><strong>Total:</strong></TD><TD><input name="total" type="text" readonly="readonly" value="0" tabindex="-1"></td>
+</TR>
+</table>
+</form>
+<br>
+
+<center><input type="button" Id="PrintIt" value="Print" onClick="javascript:hideButton();"></center>
+
+<br>
+<br>
+Signature: _____________________________________________________________<BR>
+
+</body>
+</html>

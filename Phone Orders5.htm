@@ -1,0 +1,775 @@
+<HTML>
+<BODY>
+
+<title>MGR Phone/Internet Sale Form</title>
+
+<script type="text/javascript" language="javascript">
+
+function autocalc(oText)
+{
+if (isNaN(oText.value)) //filter input
+{
+alert('Numbers only!');
+oText.value = '';
+}
+var field, val, oForm = oText.form, total = a = 0;
+for (a; a < arguments.length; ++a) //loop through text elements
+{
+field = arguments[a];
+val = parseFloat(field.value); //get value
+if (!isNaN(val)) //number?
+{
+total += val; //accumulate
+total = roundNumber(total, 2)
+}
+}
+oForm.total.value = total; //out
+}
+
+function roundNumber(num, dec) {
+	var result = Math.round(num*Math.pow(10,dec))/Math.pow(10,dec);
+	return result;
+}
+
+function waitToShow (delay) { 
+if (delay > 1) {
+setTimeout("waitToShow(1)",3000);
+} else {
+document.getElementById("PrintIt").style.display = '';
+}
+}
+
+function hideButton () {
+document.getElementById("PrintIt").style.display = 'none';window.print();
+eval("waitToShow(2)");}
+
+
+</script>
+
+
+<CENTER><H1>Phone / Internet Sale</H1></CENTER>
+
+<HR>
+<form name="dform" method="POST" action="--WEBBOT-SELF--">
+	<!--webbot bot="SaveResults" U-File="fpweb:///_private/form_results.csv" S-Format="TEXT/CSV" S-Label-Fields="TRUE" -->
+
+<TABLE>
+
+<TR>
+	<TD ALIGN=RIGHT>Date:</TD>
+	<TD><INPUT Id="currdate" name="Date" value="" size="10"></INPUT></TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>SKU:</TD>
+	<TD><input type="text" name="SKU" size="10"></TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>Description:</TD>
+	<TD><input type="text" name="Description" size="40"></TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>Price</TD>
+	<TD><input name="Price" type="text" size="40" onkeyup="return autocalc(this,Tax,Shipping)"></TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>Tax:</TD>
+	<TD><input name="Tax" type="text" size="40" onkeyup="return autocalc(this,Price,Shipping)"></TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>Shipping:</TD>
+	<TD><input name="Shipping" type="text" size="40" onkeyup="return autocalc(this,Price,Tax)"></TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>Total:</TD>
+	<TD><input name="total" type="text" readonly="readonly" value="0" size="40" tabindex="-1"></TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>Name:</TD>
+	<TD><input type="text" name="Name" size="40"></TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>Company:</TD>
+	<TD><input type="text" name="Company" size="40"></TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>Shipping Address:</TD>
+	<TD><input type="text" name="AddressShip" size="40"></TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>City:</TD>
+	<TD><input type="text" name="CityShip" size="40"></TD>
+	<TD ALIGN=RIGHT>State:</TD>
+	<TD><select size="1" name="StateShip">
+            <option value="  "
+                     >
+             
+            </option>
+            <option value="AL"
+                     >
+              Alabama (AL)
+            </option>
+          
+            <option value="AK"
+                     >
+              Alaska (AK)
+            </option>
+          
+            <option value="AZ"
+                     >
+              Arizona (AZ)
+            </option>
+          
+            <option value="AR"
+                     >
+              Arkansas (AR)
+            </option>
+          
+            <option value="CA"
+                     >
+              California (CA)
+            </option>
+          
+            <option value="CO"
+                     >
+              Colorado (CO)
+            </option>
+          
+            <option value="CT"
+                     >
+              Connecticut (CT)
+            </option>
+          
+            <option value="DE"
+                     >
+              Delaware (DE)
+            </option>
+          
+            <option value="DC"
+                     >
+              District of Columbia (DC)
+            </option>
+          
+            <option value="FL"
+                     >
+              Florida (FL)
+            </option>
+          
+            <option value="GA"
+                     >
+              Georgia (GA)
+            </option>
+          
+            <option value="HI"
+                     >
+              Hawaii (HI)
+            </option>
+          
+            <option value="ID"
+                     >
+              Idaho (ID)
+            </option>
+          
+            <option value="IL"
+                     >
+              Illinois (IL)
+            </option>
+          
+            <option value="IN"
+                     >
+              Indiana (IN)
+            </option>
+          
+            <option value="IA"
+                     >
+              Iowa (IA)
+            </option>
+          
+            <option value="KS"
+                     >
+              Kansas (KS)
+            </option>
+          
+            <option value="KY"
+                     >
+              Kentucky (KY)
+            </option>
+          
+            <option value="LA"
+                     >
+              Louisiana (LA)
+            </option>
+          
+            <option value="ME"
+                     >
+              Maine (ME)
+            </option>
+          
+            <option value="MD"
+                     >
+              Maryland (MD)
+            </option>
+          
+            <option value="MA"
+                     >
+              Massachusetts (MA)
+            </option>
+          
+            <option value="MI"
+                     >
+              Michigan (MI)
+            </option>
+          
+            <option value="MN"
+                     >
+              Minnesota (MN)
+            </option>
+          
+            <option value="MS"
+                     >
+              Mississippi (MS)
+            </option>
+          
+            <option value="MO"
+                     >
+              Missouri (MO)
+            </option>
+          
+            <option value="MT"
+                     >
+              Montana (MT)
+            </option>
+          
+            <option value="NE"
+                     >
+              Nebraska (NE)
+            </option>
+          
+            <option value="NV"
+                     >
+              Nevada (NV)
+            </option>
+          
+            <option value="NH"
+                     >
+              New Hampshire (NH)
+            </option>
+          
+            <option value="NJ"
+                     >
+              New Jersey (NJ)
+            </option>
+          
+            <option value="NM"
+                     >
+              New Mexico (NM)
+            </option>
+          
+            <option value="NY"
+                     >
+              New York (NY)
+            </option>
+          
+            <option value="NC"
+                     >
+              North Carolina (NC)
+            </option>
+          
+            <option value="ND"
+                     >
+              North Dakota (ND)
+            </option>
+          
+            <option value="OH"
+                     >
+              Ohio (OH)
+            </option>
+          
+            <option value="OK"
+                     >
+              Oklahoma (OK)
+            </option>
+          
+            <option value="OR"
+                     >
+              Oregon (OR)
+            </option>
+          
+            <option value="PA"
+                     >
+              Pennsylvania (PA)
+            </option>
+          
+            <option value="RI"
+                     >
+              Rhode Island (RI)
+            </option>
+          
+            <option value="SC"
+                     >
+              South Carolina (SC)
+            </option>
+          
+            <option value="SD"
+                     >
+              South Dakota (SD)
+            </option>
+          
+            <option value="TN"
+                     >
+              Tennessee (TN)
+            </option>
+          
+            <option value="TX"
+                     >
+              Texas (TX)
+            </option>
+          
+            <option value="UT"
+                     >
+              Utah (UT)
+            </option>
+          
+            <option value="VT"
+                     >
+              Vermont (VT)
+            </option>
+          
+            <option value="VA"
+                     >
+              Virginia (VA)
+            </option>
+          
+            <option value="WA"
+                     >
+              Washington (WA)
+            </option>
+          
+            <option value="WV"
+                     >
+              West Virginia (WV)
+            </option>
+          
+            <option value="WI"
+                     >
+              Wisconsin (WI)
+            </option>
+          
+            <option value="WY"
+                     >
+              Wyoming (WY)
+            </option>
+	</select>
+	Zip:&nbsp;<input type="text" name="ZipShip" size="10"></TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>Residential?</TD>
+	<TD>Yes<input type="radio" value="V1"  name="R1">No<input type="radio" name="R2" value="V2"></TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>Billing Address:</TD>
+	<TD><input type="text" name="AddressBilling" size="40"></TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>City:</TD>
+	<TD><input type="text" name="CityBilling" size="40"></TD>
+	<TD ALIGN=RIGHT>State:</TD>
+	<TD><select size="1" name="StateBilling">
+            <option value="  "
+                     >
+              
+            </option>
+            <option value="AL"
+                     >
+              Alabama (AL)
+            </option>
+          
+            <option value="AK"
+                     >
+              Alaska (AK)
+            </option>
+          
+            <option value="AZ"
+                     >
+              Arizona (AZ)
+            </option>
+          
+            <option value="AR"
+                     >
+              Arkansas (AR)
+            </option>
+          
+            <option value="CA"
+                     >
+              California (CA)
+            </option>
+          
+            <option value="CO"
+                     >
+              Colorado (CO)
+            </option>
+          
+            <option value="CT"
+                     >
+              Connecticut (CT)
+            </option>
+          
+            <option value="DE"
+                     >
+              Delaware (DE)
+            </option>
+          
+            <option value="DC"
+                     >
+              District of Columbia (DC)
+            </option>
+          
+            <option value="FL"
+                     >
+              Florida (FL)
+            </option>
+          
+            <option value="GA"
+                     >
+              Georgia (GA)
+            </option>
+          
+            <option value="HI"
+                     >
+              Hawaii (HI)
+            </option>
+          
+            <option value="ID"
+                     >
+              Idaho (ID)
+            </option>
+          
+            <option value="IL"
+                     >
+              Illinois (IL)
+            </option>
+          
+            <option value="IN"
+                     >
+              Indiana (IN)
+            </option>
+          
+            <option value="IA"
+                     >
+              Iowa (IA)
+            </option>
+          
+            <option value="KS"
+                     >
+              Kansas (KS)
+            </option>
+          
+            <option value="KY"
+                     >
+              Kentucky (KY)
+            </option>
+          
+            <option value="LA"
+                     >
+              Louisiana (LA)
+            </option>
+          
+            <option value="ME"
+                     >
+              Maine (ME)
+            </option>
+          
+            <option value="MD"
+                     >
+              Maryland (MD)
+            </option>
+          
+            <option value="MA"
+                     >
+              Massachusetts (MA)
+            </option>
+          
+            <option value="MI"
+                     >
+              Michigan (MI)
+            </option>
+          
+            <option value="MN"
+                     >
+              Minnesota (MN)
+            </option>
+          
+            <option value="MS"
+                     >
+              Mississippi (MS)
+            </option>
+          
+            <option value="MO"
+                     >
+              Missouri (MO)
+            </option>
+          
+            <option value="MT"
+                     >
+              Montana (MT)
+            </option>
+          
+            <option value="NE"
+                     >
+              Nebraska (NE)
+            </option>
+          
+            <option value="NV"
+                     >
+              Nevada (NV)
+            </option>
+          
+            <option value="NH"
+                     >
+              New Hampshire (NH)
+            </option>
+          
+            <option value="NJ"
+                     >
+              New Jersey (NJ)
+            </option>
+          
+            <option value="NM"
+                     >
+              New Mexico (NM)
+            </option>
+          
+            <option value="NY"
+                     >
+              New York (NY)
+            </option>
+          
+            <option value="NC"
+                     >
+              North Carolina (NC)
+            </option>
+          
+            <option value="ND"
+                     >
+              North Dakota (ND)
+            </option>
+          
+            <option value="OH"
+                     >
+              Ohio (OH)
+            </option>
+          
+            <option value="OK"
+                     >
+              Oklahoma (OK)
+            </option>
+          
+            <option value="OR"
+                     >
+              Oregon (OR)
+            </option>
+          
+            <option value="PA"
+                     >
+              Pennsylvania (PA)
+            </option>
+          
+            <option value="RI"
+                     >
+              Rhode Island (RI)
+            </option>
+          
+            <option value="SC"
+                     >
+              South Carolina (SC)
+            </option>
+          
+            <option value="SD"
+                     >
+              South Dakota (SD)
+            </option>
+          
+            <option value="TN"
+                     >
+              Tennessee (TN)
+            </option>
+          
+            <option value="TX"
+                     >
+              Texas (TX)
+            </option>
+          
+            <option value="UT"
+                     >
+              Utah (UT)
+            </option>
+          
+            <option value="VT"
+                     >
+              Vermont (VT)
+            </option>
+          
+            <option value="VA"
+                     >
+              Virginia (VA)
+            </option>
+          
+            <option value="WA"
+                     >
+              Washington (WA)
+            </option>
+          
+            <option value="WV"
+                     >
+              West Virginia (WV)
+            </option>
+          
+            <option value="WI"
+                     >
+              Wisconsin (WI)
+            </option>
+          
+            <option value="WY"
+                     >
+              Wyoming (WY)
+            </option>
+	</select>
+	Zip:&nbsp;<input type="text" name="ZipShip" size="10"></TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>Phone:</TD>
+	<TD ALIGN=RIGHT><input type="text" name="Phone" size="40"></TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>eMail:</TD>
+	<TD><input type="text" name="email" size="40"></TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>Payment Method:</TD>
+	<TD><select size="1" name="PmtMethod">
+	<option></option>
+	<option>Visa</option>
+	<option>MasterCard</option>
+	<option>Discover</option>
+	<option>American Express</option>
+	<option>PayPal</option>
+	</select></TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>Credit Card Number:</TD>
+	<TD><input type="text" name="CCNumber" size="40"></TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>Expiration:</TD>
+	<TD>Month:&nbsp;
+	<select size="1" name="ExpMonth">
+	<option></option>
+	<option>01</option>
+	<option>02</option>
+	<option>03</option>
+	<option>04</option>
+	<option>05</option>
+	<option>06</option>
+	<option>07</option>
+	<option>08</option>
+	<option>09</option>
+	<option>10</option>
+	<option>11</option>
+	<option>12</option>
+	</select>
+	Year:&nbsp;
+	<select size="1" name="ExpYear">
+	<option></option>
+	<option>2009</option>
+	<option>2010</option>
+	<option>2011</option>
+	<option>2012</option>
+	<option>2013</option>
+	<option>2014</option>
+	<option>2015</option>
+	<option>2015</option>
+	<option>2016</option>
+	<option>2017</option>
+	</select></TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>VCode:</TD>
+	<TD><input type="text" name="vcode" size="40"></TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>Sold by:</TD>
+	<TD><select size="1" name="SoldBy">
+	<option></option>
+	<option>JCA</option>
+	<option>JLC</option>
+	<option>ATJ</option>
+	<option>JBA</option>
+	<option>KAW</option>
+	</select></TD>
+</TR>
+</TABLE>
+<HR>
+<TABLE>
+<TR>
+	<TD ALIGN=RIGHT>Pre-Ship Tested by:</TD
+	<TD><input type="text" name="PreShipTestedBy" size="40"></TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>Packed By:</TD
+	<TD><input type="text" name="PackedBy" size="40"></TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>Shipped Date:</TD>
+	<TD><input type="text" name="ShipDate" size="40">&nbsp;(attach UPS Receipt)</TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>Weight:</TD>
+	<TD><input type="text" name="weight" size="20"></TD>
+</TR>
+<TR>
+	<TD ALIGN=RIGHT>Length:</TD>
+	<TD><input type="text" name="length" size="10">
+	Width:
+	<input type="text" name="Width" size="10">
+	Height:
+	<input type="text" name="height" size="10"></TD>
+</TR>
+</TABLE>
+<HR>
+</form>
+
+
+<center><input type="button" Id="PrintIt" value="Print" onClick="javascript:hideButton();"></center>
+
+<script>
+/*Current date in form credit: 
+JavaScript Kit (www.javascriptkit.com)
+Over 200+ free scripts here!
+*/
+
+var mydate=new Date()
+var theyear=mydate.getYear()
+if (theyear < 1000)
+theyear+=1900
+var theday=mydate.getDay()
+var themonth=mydate.getMonth()+1
+if (themonth<10)
+themonth="0"+themonth
+var theday=mydate.getDate()
+if (theday<10)
+theday="0"+theday
+
+//////EDIT below three variable to customize the format of the date/////
+
+var displayfirst=themonth
+var displaysecond=theday
+var displaythird=theyear
+
+////////////////////////////////////
+
+document.dform.currdate.value=displayfirst+"/"+displaysecond+"/"+displaythird
+
+</script>
+
+
+</BODY>
+</HTML>

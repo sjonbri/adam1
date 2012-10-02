@@ -1,0 +1,328 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<title>MGR Cash Count Form</title>
+
+<style type="text/css">
+input {width: 40px;}
+</style>
+
+<style>
+.input {width:50%}
+</style> 
+
+
+<script type="text/javascript" language="javascript">
+
+var dvalues = new Array(12);
+dvalues[0] = .01;
+dvalues[1] = .05;
+dvalues[2] = .10;
+dvalues[3] = .25;
+dvalues[4] = .50;
+dvalues[5] = 1;
+dvalues[6] = 2;
+dvalues[7] = 5;
+dvalues[8] = 10;
+dvalues[9] = 20;
+dvalues[10] = 50;
+dvalues[11] = 100;
+
+function autocalc(oText)
+{
+if (isNaN(oText.value)) //filter input
+{
+alert('Numbers only!');
+oText.value = '';
+}
+var field, val, oForm = oText.form, total = a = 0;
+//for (a; a < arguments.length; ++a) //loop through text elements
+for (a; a < 2; a++) //loop through text elements
+{
+field = arguments[a];
+val = parseFloat(field.value); //get value
+if (!isNaN(val)) //number?
+{
+total += val*dvalues[a]; //accumulate
+}
+}
+
+total=0;
+
+if (!isNaN(parseInt(oForm.pennycnt.value)))
+{
+total += parseInt(oForm.pennycnt.value)*dvalues[0];
+oForm.pennytot.value = round_decimals(parseInt(oForm.pennycnt.value)*dvalues[0], 2);
+}
+if (!isNaN(parseInt(oForm.nickelcnt.value)))
+{
+total += parseInt(oForm.nickelcnt.value)*dvalues[1];
+oForm.nickeltot.value = round_decimals(parseInt(oForm.nickelcnt.value)*dvalues[1], 2);
+}
+if (!isNaN(parseInt(oForm.dimecnt.value)))
+{
+total += parseInt(oForm.dimecnt.value)*dvalues[2];
+oForm.dimetot.value = round_decimals(parseInt(oForm.dimecnt.value)*dvalues[2], 2);
+}
+if (!isNaN(parseInt(oForm.quartercnt.value)))
+{
+total += parseInt(oForm.quartercnt.value)*dvalues[3];
+oForm.quartertot.value = round_decimals(parseInt(oForm.quartercnt.value)*dvalues[3], 2);
+}
+
+if (!isNaN(parseInt(oForm.fiftycentcnt.value)))
+{
+total += parseInt(oForm.fiftycentcnt.value)*dvalues[4];
+oForm.fiftycenttot.value = round_decimals(parseInt(oForm.fiftycentcnt.value)*dvalues[4], 2);
+}
+
+if (!isNaN(parseInt(oForm.singlecnt.value)))
+{
+total += parseInt(oForm.singlecnt.value)*dvalues[5];
+oForm.singletot.value = round_decimals(parseInt(oForm.singlecnt.value)*dvalues[5], 0);
+}
+
+if (!isNaN(parseInt(oForm.twodollarcnt.value)))
+{
+total += parseInt(oForm.twodollarcnt.value)*dvalues[6];
+oForm.twodollartot.value = round_decimals(parseInt(oForm.twodollarcnt.value)*dvalues[6], 0);
+}
+
+if (!isNaN(parseInt(oForm.fivecnt.value)))
+{
+total += parseInt(oForm.fivecnt.value)*dvalues[7];
+oForm.fivetot.value = round_decimals(parseInt(oForm.fivecnt.value)*dvalues[7], 0);
+}
+
+if (!isNaN(parseInt(oForm.tencnt.value)))
+{
+total += parseInt(oForm.tencnt.value)*dvalues[8];
+oForm.tentot.value = round_decimals(parseInt(oForm.tencnt.value)*dvalues[8], 0);
+}
+
+if (!isNaN(parseInt(oForm.twentycnt.value)))
+{
+total += parseInt(oForm.twentycnt.value)*dvalues[9];
+oForm.twentytot.value = round_decimals(parseInt(oForm.twentycnt.value)*dvalues[9], 0);
+}
+
+if (!isNaN(parseInt(oForm.fiftycnt.value)))
+{
+total += parseInt(oForm.fiftycnt.value)*dvalues[10];
+oForm.fiftytot.value = round_decimals(parseInt(oForm.fiftycnt.value)*dvalues[10], 0);
+}
+
+if (!isNaN(parseInt(oForm.hundredcnt.value)))
+{
+total += parseInt(oForm.hundredcnt.value)*dvalues[11];
+oForm.hundredtot.value = round_decimals(parseInt(oForm.hundredcnt.value)*dvalues[11], 0);
+}
+
+oForm.total.value   = round_decimals(total, 2);
+oForm.deposit.value = round_decimals(total-150, 2);
+
+
+}
+
+
+function round_decimals(original_number, decimals) {
+    var result1 = original_number * Math.pow(10, decimals)
+    var result2 = Math.round(result1)
+    var result3 = result2 / Math.pow(10, decimals)
+    return pad_with_zeros(result3, decimals)
+}
+
+function pad_with_zeros(rounded_value, decimal_places) {
+
+    // Convert the number to a string
+    var value_string = rounded_value.toString()
+    
+    // Locate the decimal point
+    var decimal_location = value_string.indexOf(".")
+
+    // Is there a decimal point?
+    if (decimal_location == -1) {
+        
+        // If no, then all decimal places will be padded with 0s
+        decimal_part_length = 0
+        
+        // If decimal_places is greater than zero, tack on a decimal point
+        value_string += decimal_places > 0 ? "." : ""
+    }
+    else {
+
+        // If yes, then only the extra decimal places will be padded with 0s
+        decimal_part_length = value_string.length - decimal_location - 1
+    }
+    
+    // Calculate the number of decimal places that need to be padded with 0s
+    var pad_total = decimal_places - decimal_part_length
+    
+    if (pad_total > 0) {
+        
+        // Pad the string with 0s
+        for (var counter = 1; counter <= pad_total; counter++) 
+            value_string += "0"
+        }
+    return value_string
+}
+
+
+
+function waitToShow (delay) { 
+if (delay > 1) {
+setTimeout("waitToShow(1)",3000);
+} else {
+document.getElementById("PrintIt").style.display = '';
+}
+}
+
+function hideButton () {
+document.getElementById("PrintIt").style.display = 'none';window.print();
+eval("waitToShow(2)");}
+
+
+</script>
+
+</head>
+
+
+<script>
+/*Current date in form credit: 
+JavaScript Kit (www.javascriptkit.com)
+Over 200+ free scripts here!
+*/
+
+var mydate=new Date()
+var theyear=mydate.getYear()
+if (theyear < 1000)
+theyear+=1900
+var theday=mydate.getDay()
+var themonth=mydate.getMonth()+1
+if (themonth<10)
+themonth="0"+themonth
+var theday=mydate.getDate()
+if (theday<10)
+theday="0"+theday
+
+//////EDIT below three variable to customize the format of the date/////
+
+var displayfirst=themonth
+var displaysecond=theday
+var displaythird=theyear
+
+////////////////////////////////////
+
+document.dform.currdate.value=displayfirst+"/"+displaysecond+"/"+displaythird
+
+
+
+
+</script>
+
+
+
+<form>
+
+<TABLE ALIGN=CENTER BORDER=2>
+
+<tr>
+<th WIDTH="25%">Denomination</th>
+<th WIDTH="25%" ALIGN="LEFT">Count</th>
+<th WIDTH="50%" ALIGN="LEFT">Value</th>
+</tr>
+
+<tr>
+<TD ALIGN="RIGHT">Pennies</TD>
+<TD><input name="pennycnt" type="text" value="0" onkeyup="return autocalc(this, nickelcnt)" tabindex="1"></td>
+<TD><input name="pennytot" type="text" readonly="readonly" value="0" tabindex="-1" class="input"></input></TD>
+</tr>
+
+
+<tr>
+<TD ALIGN="RIGHT">Nickels</TD>
+<TD><input name="nickelcnt" type="text" value="0" onkeyup="return autocalc(this,pennycnt)" tabindex="2"></td>
+<TD><input name="nickeltot" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></TD>
+</tr>
+
+<tr>
+<TD ALIGN="RIGHT">Dimes</TD>
+<TD><input name="dimecnt" type="text" value="0" onkeyup="return autocalc(this,pennycnt)" tabindex="3"></td>
+<TD><input name="dimetot" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></TD>
+</tr>
+
+<tr>
+<TD ALIGN="RIGHT">Quarters</TD>
+<TD><input name="quartercnt" type="text" value="0" onkeyup="return autocalc(this,pennycnt)" tabindex="4"></td>
+<TD><input name="quartertot" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></TD>
+</tr>
+
+<tr>
+<TD ALIGN="RIGHT">Fifty cents</TD>
+<TD><input name="fiftycentcnt" type="text" value="0" onkeyup="return autocalc(this,pennycnt)" tabindex="5"></td>
+<TD><input name="fiftycenttot" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></TD>
+</tr>
+
+<tr>
+<TD ALIGN="RIGHT">Singles</TD>
+<TD><input name="singlecnt" type="text" value="0" onkeyup="return autocalc(this,pennycnt)" tabindex="6"></td>
+<TD><input name="singletot" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></TD>
+</tr>
+
+<tr>
+<TD ALIGN="RIGHT">2 Dollars</TD>
+<TD><input name="twodollarcnt" type="text" value="0" onkeyup="return autocalc(this,pennycnt)" tabindex="7"></td>
+<TD><input name="twodollartot" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></TD>
+</tr>
+
+<tr>
+<TD ALIGN="RIGHT">Fives</TD>
+<TD><input name="fivecnt" type="text" value="0" onkeyup="return autocalc(this,pennycnt)" tabindex="8"></td>
+<TD><input name="fivetot" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></TD>
+</tr>
+
+<tr>
+<TD ALIGN="RIGHT">Tens</TD>
+<TD><input name="tencnt" type="text" value="0" onkeyup="return autocalc(this,pennycnt)" tabindex="9"></td>
+<TD><input name="tentot" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></TD>
+</tr>
+
+<tr>
+<TD ALIGN="RIGHT">Twentys</TD>
+<TD><input name="twentycnt" type="text" value="0" onkeyup="return autocalc(this,pennycnt)" tabindex="10"></td>
+<TD><input name="twentytot" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></TD>
+</tr>
+
+<tr>
+<TD ALIGN="RIGHT">Fifties</TD>
+<TD><input name="fiftycnt" type="text" value="0" onkeyup="return autocalc(this,pennycnt)" tabindex="11"></td>
+<TD><input name="fiftytot" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></TD>
+</tr>
+
+<tr>
+<TD ALIGN="RIGHT">Hundreds</TD>
+<TD><input name="hundredcnt" type="text" value="0" onkeyup="return autocalc(this,pennycnt)" tabindex="12"></td>
+<TD><input name="hundredtot" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></TD>
+</tr>
+
+<TR>
+<TD  colspan="2"ALIGN=RIGHT><strong>Total:</strong></TD><TD><input name="total" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></td>
+</TR>
+
+<TR>
+<TD  colspan="2" ALIGN=RIGHT><strong>Drawer:</strong></TD><TD><input name="drawer" type="text" readonly="readonly" value="150.00" tabindex="-1" class="input" ></td>
+</TR>
+
+<TR>
+<TD  colspan="2" ALIGN=RIGHT><strong>Deposit:</strong></TD><TD><input name="deposit" size=15 type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></td>
+</TR>
+
+
+</table>
+</form>
+<br>
+
+</body>
+</html>
