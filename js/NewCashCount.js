@@ -196,6 +196,6 @@ var displaythird=theyear
 
 ////////////////////////////////////
 
-document.dform.currdate.value=displayfirst+"/"+displaysecond+"/"+displaythird
+// document.dform.currdate.value=displayfirst+"/"+displaysecond+"/"+displaythird
 
 
