@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MGR Cash Count Form</title>
+<link rel="stylesheet" type="text/css" href="../css/NewCashCount.css" />
+<script src="../js/NewCashCount.js"></script>
+</head>
+
+<body onload="setFocus()">
+
+<form>
+<TABLE ALIGN=CENTER BORDER=2>
+    <tr>
+       <th WIDTH="25%">Denomination</th>
+       <th WIDTH="25%" ALIGN="LEFT">Count</th>
+       <th WIDTH="50%" ALIGN="LEFT">Value</th>
+    </tr>
+    <tr>
+        <TD ALIGN="RIGHT">Pennies</TD>
+        <TD><input name="pennycnt" type="text" id="pennycnt"  onkeyup="return autocalc(this, nickelcnt)" tabindex="1"></td>
+        <TD><input name="pennytot" type="text" readonly="readonly" value="0" tabindex="-1" class="input"></input></TD>
+    </tr>
+    <tr>
+        <TD ALIGN="RIGHT">Nickels</TD>
+        <TD><input name="nickelcnt" type="text" value="0" onkeyup="return autocalc(this,pennycnt)" tabindex="2"></td>
+        <TD><input name="nickeltot" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></TD>
+    </tr>
+    <tr>
+      <TD ALIGN="RIGHT">Dimes</TD>
+      <TD><input name="dimecnt" type="text" value="0" onkeyup="return autocalc(this,pennycnt)" tabindex="3"></td>
+      <TD><input name="dimetot" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></TD>
+    </tr>
+    <tr>
+      <TD ALIGN="RIGHT">Quarters</TD>
+      <TD><input name="quartercnt" type="text" value="0" onkeyup="return autocalc(this,pennycnt)" tabindex="4"></td>
+      <TD><input name="quartertot" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></TD>
+    </tr>
+    <tr>
+      <TD ALIGN="RIGHT">Fifty cents</TD>
+      <TD><input name="fiftycentcnt" type="text" value="0" onkeyup="return autocalc(this,pennycnt)" tabindex="5"></td>
+      <TD><input name="fiftycenttot" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></TD>
+    </tr>
+    <tr>
+      <TD ALIGN="RIGHT">Singles</TD>
+      <TD><input name="singlecnt" type="text" value="0" onkeyup="return autocalc(this,pennycnt)" tabindex="6"></td>
+      <TD><input name="singletot" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></TD>
+    </tr>
+    <tr>
+      <TD ALIGN="RIGHT">2 Dollars</TD>
+      <TD><input name="twodollarcnt" type="text" value="0" onkeyup="return autocalc(this,pennycnt)" tabindex="7"></td>
+      <TD><input name="twodollartot" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></TD>
+    </tr>
+    <tr>
+      <TD ALIGN="RIGHT">Fives</TD>
+      <TD><input name="fivecnt" type="text" value="0" onkeyup="return autocalc(this,pennycnt)" tabindex="8"></td>
+      <TD><input name="fivetot" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></TD>
+    </tr>
+    <tr>
+      <TD ALIGN="RIGHT">Tens</TD>
+      <TD><input name="tencnt" type="text" value="0" onkeyup="return autocalc(this,pennycnt)" tabindex="9"></td>
+      <TD><input name="tentot" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></TD>
+    </tr>
+    <tr>
+      <TD ALIGN="RIGHT">Twentys</TD>
+      <TD><input name="twentycnt" type="text" value="0" onkeyup="return autocalc(this,pennycnt)" tabindex="10"></td>
+      <TD><input name="twentytot" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></TD>
+    </tr>
+    <tr>
+      <TD ALIGN="RIGHT">Fifties</TD>
+      <TD><input name="fiftycnt" type="text" value="0" onkeyup="return autocalc(this,pennycnt)" tabindex="11"></td>
+      <TD><input name="fiftytot" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></TD>
+    </tr>
+    <tr>
+      <TD ALIGN="RIGHT">Hundreds</TD>
+      <TD><input name="hundredcnt" type="text" value="0" onkeyup="return autocalc(this,pennycnt)" tabindex="12"></td>
+      <TD><input name="hundredtot" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></TD>
+    </tr>
+    <TR>
+      <TD  colspan="2"ALIGN=RIGHT><strong>Total:</strong></TD><TD><input name="total" type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></td>
+    </TR>
+    <TR>
+      <TD  colspan="2" ALIGN=RIGHT><strong>Drawer:</strong></TD><TD><input name="drawer" type="text" readonly="readonly" value="150.00" tabindex="-1" class="input" ></td>
+    </TR>
+    <TR>
+      <TD  colspan="2" ALIGN=RIGHT><strong>Deposit:</strong></TD><TD><input name="deposit" size=15 type="text" readonly="readonly" value="0" tabindex="-1" class="input" ></td>
+    </TR>
+  </table>
+  </form>
+</body>
+</html>
