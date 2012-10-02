@@ -1,7 +1,6 @@
-function setFocus()
-{
-    document.getElementById("pennycnt").focus();
-}
+$(document).ready(function() {
+    $('#pennycnt').focus();
+});
 
 var dvalues = new Array(12);
 dvalues[0] = .01;
